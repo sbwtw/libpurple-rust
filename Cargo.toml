@@ -1,11 +1,18 @@
 [package]
 name = "libpurple-rust"
+description = "libpurple rust binding"
+documentation = "https://github.com/sbwtw/libpurple-rust"
+homepage = "https://github.com/sbwtw/libpurple-rust"
+repository = "https://github.com/sbwtw/libpurple-rust"
+keywords = ["purple", "libpurple"]
+categories = ["api-bindings"]
+license = "WTFPL"
 version = "0.0.1"
 authors = ["石博文 <sbw@sbw.so>"]
 build = "build.rs"
 links = "purple"
 
 [build-dependencies]
-pkg-config = "*"
-libc = "*"
-bindgen = "~0.21.2"
+pkg-config = "~0.3"
+libc = "~0.2"
+bindgen = "~0.21"
