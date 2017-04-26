@@ -7,7 +7,7 @@ use std::ptr::null_mut;
 impl PurplePluginInfo {
     pub fn new() -> PurplePluginInfo {
 
-        let id = CString::new("prpl-sbwtw-web-wechat").unwrap();
+        let id = CString::new("prpl-sbwtw-web_wechat").unwrap();
         let name = CString::new("Wechat").unwrap();
         let version = CString::new("0.0.0").unwrap();
         let summary = CString::new("Web wechat protocol implements").unwrap();

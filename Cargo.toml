@@ -1,5 +1,5 @@
 [package]
-name = "libpurple-rust"
+name = "purple-sys"
 description = "libpurple rust binding"
 documentation = "https://github.com/sbwtw/libpurple-rust"
 homepage = "https://github.com/sbwtw/libpurple-rust"
@@ -7,7 +7,7 @@ repository = "https://github.com/sbwtw/libpurple-rust"
 keywords = ["purple", "libpurple"]
 categories = ["api-bindings"]
 license = "WTFPL"
-version = "0.0.1"
+version = "0.0.2"
 authors = ["石博文 <sbw@sbw.so>"]
 build = "build.rs"
 links = "purple"
