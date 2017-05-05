@@ -7,14 +7,6 @@ use std::ptr::null_mut;
 impl PurplePluginInfo {
     pub fn new() -> PurplePluginInfo {
 
-        let id = CString::new("prpl-sbwtw-web_wechat").unwrap();
-        let name = CString::new("Wechat").unwrap();
-        let version = CString::new("0.0.0").unwrap();
-        let summary = CString::new("Web wechat protocol implements").unwrap();
-        let description = CString::new("Web wechat protocol implements").unwrap();
-        let author = CString::new("sbwtw <sbw@sbw.so>").unwrap();
-        let home_page = CString::new("http://blog.sbw.so").unwrap();
-
         PurplePluginInfo {
             magic: PURPLE_PLUGIN_MAGIC,
             major_version: PURPLE_MAJOR_VERSION,
@@ -24,13 +16,13 @@ impl PurplePluginInfo {
             flags: 0,
             dependencies: null_mut(),
             priority: PURPLE_PRIORITY_DEFAULT as i32,
-            id: id.into_raw(),
-            name: name.into_raw(),
-            version: version.into_raw(),
-            summary: summary.into_raw(),
-            description: description.into_raw(),
-            author: author.into_raw(),
-            homepage: home_page.into_raw(),
+            id: null_mut(),
+            name: null_mut(),
+            version: null_mut(),
+            summary: null_mut(),
+            description: null_mut(),
+            author: null_mut(),
+            homepage: null_mut(),
 
             load: None,
             unload: None,
