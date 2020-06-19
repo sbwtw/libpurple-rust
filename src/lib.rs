@@ -6,7 +6,6 @@ use std::ptr::null_mut;
 
 impl PurplePluginInfo {
     pub fn new() -> PurplePluginInfo {
-
         PurplePluginInfo {
             magic: PURPLE_PLUGIN_MAGIC,
             major_version: PURPLE_MAJOR_VERSION,
@@ -41,9 +40,14 @@ impl PurplePluginInfo {
     }
 }
 
+impl Default for PurplePluginInfo {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl PurpleBuddyIconSpec {
     pub fn new() -> PurpleBuddyIconSpec {
-
         let formats = CString::new("png,jpg,jpeg,gif").unwrap();
 
         PurpleBuddyIconSpec {
@@ -53,15 +57,23 @@ impl PurpleBuddyIconSpec {
             max_width: 1024,
             max_height: 1024,
             max_filesize: 0,
-            scale_rules: PURPLE_ICON_SCALE_SEND,
+            scale_rules: PurpleIconScaleRules::PURPLE_ICON_SCALE_SEND,
         }
+    }
+}
+
+impl Default for PurpleBuddyIconSpec {
+    fn default() -> Self {
+        Self::new()
     }
 }
 
 impl PurplePluginProtocolInfo {
     pub fn new() -> PurplePluginProtocolInfo {
         PurplePluginProtocolInfo {
-            options: OPT_PROTO_NO_PASSWORD | OPT_PROTO_IM_IMAGE | OPT_PROTO_CHAT_TOPIC,
+            options: PurpleProtocolOptions::OPT_PROTO_NO_PASSWORD
+                | PurpleProtocolOptions::OPT_PROTO_IM_IMAGE
+                | PurpleProtocolOptions::OPT_PROTO_CHAT_TOPIC,
 
             user_splits: null_mut(),
             protocol_options: null_mut(),
@@ -140,11 +152,29 @@ impl PurplePluginProtocolInfo {
             get_account_text_table: None,
             initiate_media: None,
             get_media_caps: None,
+            #[cfg(libpurple2_7)]
             get_moods: None,
+            #[cfg(libpurple2_7)]
             set_public_alias: None,
+            #[cfg(libpurple2_7)]
             get_public_alias: None,
+            #[cfg(libpurple2_8)]
             add_buddy_with_invite: None,
+            #[cfg(libpurple2_8)]
             add_buddies_with_invite: None,
+
+            #[cfg(libpurple2_14)]
+            chat_can_receive_file: None,
+            #[cfg(libpurple2_14)]
+            chat_send_file: None,
+            #[cfg(libpurple2_14)]
+            get_cb_alias: None,
         }
+    }
+}
+
+impl Default for PurplePluginProtocolInfo {
+    fn default() -> Self {
+        Self::new()
     }
 }

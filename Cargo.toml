@@ -7,7 +7,7 @@ repository = "https://github.com/sbwtw/libpurple-rust"
 keywords = ["purple", "libpurple"]
 categories = ["api-bindings"]
 license = "WTFPL"
-version = "0.0.4"
+version = "0.0.5"
 authors = ["石博文 <sbw@sbw.so>"]
 build = "build.rs"
 links = "purple"
@@ -15,4 +15,5 @@ links = "purple"
 [build-dependencies]
 pkg-config = "~0.3"
 libc = "~0.2"
-bindgen = "~0.21"
+bindgen = "~0.54"
+

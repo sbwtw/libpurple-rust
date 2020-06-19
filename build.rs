@@ -1,18 +1,34 @@
 extern crate bindgen;
 extern crate pkg_config;
 
-use std::path::Path;
 use std::env;
+use std::path::Path;
 
 fn main() {
-
     let out_dir = env::var("OUT_DIR").unwrap();
     let out_file = Path::new(&out_dir).join("purple.rs");
     let mut bindings = bindgen::builder()
-        .no_unstable_rust()
-        .bitfield_enum("PURPLE_ICON_SCALE_.*|OPT_PROTO_.*|PURPLE_MESSAGE_.*");
+        .whitelist_type("Purple.*")
+        .whitelist_function("purple_.*")
+        .whitelist_var("PURPLE_.*")
+        .bitfield_enum("PurpleIconScaleRules|PurpleProtocolOptions|")
+        .newtype_enum("PurplePluginType");
 
     let purple_lib = pkg_config::probe_library("purple").unwrap();
+
+    let mut versions = purple_lib
+        .version
+        .split(".")
+        .map(|v| v.parse::<u32>().unwrap());
+    let major = versions.next().unwrap();
+    let minor = versions.next().unwrap();
+    if major != 2 {
+        panic!("Only support libpurple 2.x.x");
+    }
+    for x in 0..minor + 1 {
+        println!("cargo:rustc-cfg=libpurple2_{}", x);
+    }
+
     for path in &purple_lib.include_paths {
         let mut p = path.clone();
         p.push("purple.h");
