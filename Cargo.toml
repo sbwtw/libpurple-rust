@@ -15,5 +15,5 @@ links = "purple"
 [build-dependencies]
 pkg-config = "~0.3"
 libc = "~0.2"
-bindgen = "~0.54"
+bindgen = "~0.58"
 
