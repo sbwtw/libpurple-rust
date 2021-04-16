@@ -8,9 +8,9 @@ fn main() {
     let out_dir = env::var("OUT_DIR").unwrap();
     let out_file = Path::new(&out_dir).join("purple.rs");
     let mut bindings = bindgen::builder()
-        .whitelist_type("Purple.*")
-        .whitelist_function("purple_.*")
-        .whitelist_var("PURPLE_.*")
+        .allowlist_type("Purple.*")
+        .allowlist_function("purple_.*")
+        .allowlist_var("PURPLE_.*")
         .bitfield_enum("PurpleIconScaleRules|PurpleProtocolOptions|")
         .newtype_enum("PurplePluginType");
 
